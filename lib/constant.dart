@@ -12,4 +12,7 @@ Color bottomBarColor = const Color.fromARGB(255, 23, 28, 16);
 Color drowerBorderSpacing = const Color.fromARGB(255, 100, 110, 84);
 Color drowerItemBgColor = const Color.fromARGB(255, 121, 140, 93);
 Color drowerBg = const Color.fromARGB(255, 50, 57, 39);
+const appBarTitleSize = 18.0;
+const appBarIconSize = 35.0;
 const borderRadius = 15.0;
+const appBarHeight = 90.0;
