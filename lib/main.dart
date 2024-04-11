@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: appPrimaryColor,
-        bottomNavigationBar: _buildScreens(),
-      ),
+        bottomNavigationBar: _buildScreens()
+      )
     );
   }
 }
