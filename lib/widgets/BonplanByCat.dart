@@ -1,4 +1,5 @@
 import 'package:bonplan/constant.dart';
+import 'package:bonplan/screens/ListPage.dart';
 import 'package:bonplan/widgets/bonPlan/BonPlan.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +84,15 @@ class _BonplanByCatState extends State<BonplanByCat> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => const ListPage(
+                        title: 'Plans de la semaine',
+                      ),
+                    ));
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
@@ -102,7 +111,8 @@ class _BonplanByCatState extends State<BonplanByCat> {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: (MediaQuery.of(context).size.height / 3) + 140, // Hauteur du contenu
+          height: (MediaQuery.of(context).size.height / 3) +
+              140, // Hauteur du contenu
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: items[_selectedIndex].map((item) {

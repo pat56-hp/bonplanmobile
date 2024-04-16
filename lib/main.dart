@@ -1,6 +1,7 @@
 import 'package:bonplan/constant.dart';
 import 'package:bonplan/screens/Explore.dart';
 import 'package:bonplan/screens/Favoris.dart';
+import 'package:bonplan/screens/ListPage.dart';
 import 'package:bonplan/screens/Profile.dart';
 import 'package:bonplan/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     List<PersistentBottomNavBarItem> _navBarItems() {
@@ -49,22 +55,21 @@ class MyApp extends StatelessWidget {
 
     List<Widget> _screens() {
       return [
-        const Home(),
-        const Explore(),
-        const Favoris(),
-        const Profile()
+        Home(controller: controller),
+        Explore(controller: controller),
+        Favoris(controller: controller),
+        Profile(controller: controller)
       ];
     }
 
     PersistentTabView _buildScreens() {
-      return PersistentTabView(
-        context,
-        controller: controller,
-        screens: _screens(),
-        items: _navBarItems(),
-        backgroundColor : bottomBarColor,
-        navBarStyle: NavBarStyle.style3
-      );
+      return PersistentTabView(context,
+          controller: controller,
+          screens: _screens(),
+          items: _navBarItems(),
+          confineInSafeArea: true,
+          backgroundColor: bottomBarColor,
+          navBarStyle: NavBarStyle.style3);
     }
 
     return MaterialApp(
@@ -76,8 +81,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: appPrimaryColor,
-        bottomNavigationBar: _buildScreens()
-      )
+        bottomNavigationBar: _buildScreens(),
+      ),
     );
   }
 }

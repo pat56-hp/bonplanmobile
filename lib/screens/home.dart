@@ -7,9 +7,11 @@ import 'package:bonplan/widgets/HomeSearch.dart';
 import 'package:bonplan/widgets/TopPlan.dart';
 import 'package:bonplan/widgets/popular.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final PersistentTabController controller;
+  const Home({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -307,23 +309,23 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             children: [
               //Search in home page
-              HomeSearch(),
+              const HomeSearch(),
               //Plan by category
-              BonplanByCat(),
+              const BonplanByCat(),
               //Recent plan
-              TopPlan(),
+              const TopPlan(),
               //Popular plan
-              Popular(),
+              const Popular(),
               //By city
-              ByCity(),
+              const ByCity(),
               //Find card
-              FindCard(),
+              FindCard(controller: controller),
             ],
           ),
         ),

@@ -1,18 +1,35 @@
 import 'package:bonplan/constant.dart';
+import 'package:bonplan/widgets/profil/AdessUpdate.dart';
+import 'package:bonplan/widgets/profil/EmailUpdate.dart';
+import 'package:bonplan/widgets/profil/LastNameUpdate.dart';
+import 'package:bonplan/widgets/profil/NameUpdate.dart';
+import 'package:bonplan/widgets/profil/PhoneUpdate.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  final PersistentTabController controller;
+  const Profile({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController name = TextEditingController(text: 'Kouassi');
+    TextEditingController lastname = TextEditingController(text: 'Aimé');
+    TextEditingController email =
+        TextEditingController(text: 'pataime56@gmail.com');
+    TextEditingController adress =
+        TextEditingController(text: 'Abidjan, Abobo');
+    TextEditingController phone = TextEditingController(text: '+2250708377751');
+
     return Scaffold(
       backgroundColor: appPrimaryColor,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         leading: Container(
-          margin: const EdgeInsets.only(top: 30.0),
+          margin: const EdgeInsets.only(top: appBartMarginTop),
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {controller.index = 0;},
               icon: const Icon(
                 Icons.chevron_left,
                 size: appBarIconSize,
@@ -20,7 +37,7 @@ class Profile extends StatelessWidget {
         ),
         toolbarHeight: appBarHeight,
         title: Container(
-          margin: const EdgeInsets.only(top: 30.0),
+          margin: const EdgeInsets.only(top: appBartMarginTop),
           child: const Text(
             "Profil",
             style: TextStyle(
@@ -81,15 +98,65 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                item('Nom', 'Kouassi'),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return NameUpdate(name: name);
+                        });
+                  },
+                  child: item('Nom', name.text),
+                ),
                 separator(),
-                item('Prénom(s)', 'Patrick Aimé'),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return LastNameUpdate(lastname: lastname);
+                        });
+                  },
+                  child: item('Prénom(s)', lastname.text),
+                ),
                 separator(),
-                item('Email', 'pataime56@gmail.com'),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return EmailUpdate(email: email);
+                        });
+                  },
+                  child: item('Email', email.text),
+                ),
                 separator(),
-                item('Contact', '+225********51'),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return PhoneUpdate(phone: phone);
+                        });
+                  },
+                  child: item('Contact', phone.text),
+                ),
                 separator(),
-                item('Adresse', 'Abidjan, Abobo'),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AdressUpdate(adress: adress);
+                        });
+                  },
+                  child: item('Adresse', adress.text),
+                )
               ],
             ),
           ),
@@ -110,7 +177,7 @@ Container separator() {
 }
 
 Row item(String title, String data) {
-  return  Row(
+  return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(

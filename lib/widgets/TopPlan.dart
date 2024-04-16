@@ -1,4 +1,5 @@
 import 'package:bonplan/constant.dart';
+import 'package:bonplan/screens/ListPage.dart';
 import 'package:bonplan/widgets/bonPlan/Top.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,15 @@ class TopPlan extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const ListPage(
+                          title: 'Récemment ajoutés',
+                        ),
+                      ));
+                },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8.0, vertical: 2.0),
@@ -39,7 +48,8 @@ class TopPlan extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           SizedBox(
-            height: (MediaQuery.of(context).size.height / 3) + 20, // Hauteur du contenu
+            height: (MediaQuery.of(context).size.height / 3) +
+                20, // Hauteur du contenu
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: List.generate(10, (index) {

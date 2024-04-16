@@ -1,4 +1,5 @@
 import 'package:bonplan/constant.dart';
+import 'package:bonplan/screens/ListPage.dart';
 import 'package:bonplan/widgets/bonPlan/BonPlan.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,11 @@ class Popular extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) => const ListPage(title: 'Plans populaires',),
+                ));
+              },
               child: Container(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8.0, vertical: 2.0),

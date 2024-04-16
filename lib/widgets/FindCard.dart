@@ -1,11 +1,14 @@
 import 'package:bonplan/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class FindCard extends StatelessWidget {
-  const FindCard({super.key});
+  final PersistentTabController controller;
+  const FindCard({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       padding: const EdgeInsets.all(30.0),
       margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -24,7 +27,9 @@ class FindCard extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: null,
+              onPressed: (){
+                controller.index = 1;
+              },
               style: ButtonStyle(
                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(borderRadius))),

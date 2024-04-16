@@ -15,4 +15,6 @@ Color drowerBg = const Color.fromARGB(255, 50, 57, 39);
 const appBarTitleSize = 18.0;
 const appBarIconSize = 35.0;
 const borderRadius = 15.0;
-const appBarHeight = 90.0;
+const borderRadiusModalBottomSheet = 20.0;
+const appBarHeight = 100.0;
+const appBartMarginTop = 40.0;

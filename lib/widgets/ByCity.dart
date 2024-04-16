@@ -1,4 +1,5 @@
 import 'package:bonplan/constant.dart';
+import 'package:bonplan/screens/ListPage.dart';
 import 'package:flutter/material.dart';
 
 class ByCity extends StatelessWidget {
@@ -24,7 +25,11 @@ class ByCity extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) => const ListPage(title: 'Prêts de chez vous',),
+                ));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 2.0),

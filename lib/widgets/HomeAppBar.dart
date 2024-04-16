@@ -7,10 +7,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(top: appBartMarginTop),
       color: Colors.white,
       //height: 200,
       child: AppBar(
+        toolbarHeight: appBarHeight,
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         shadowColor: appPrimaryColor,
@@ -82,5 +83,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(120);
+  Size get preferredSize => const Size.fromHeight(130);
 }
